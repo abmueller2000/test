@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri-Score System Benefits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #0072ce;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #030303 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #e9ff70;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .banner {
+            padding: 40px 0;
+            background: #e4f1fe;
+            color: #000;
+            text-align: center;
+        }
+        .banner h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        section#main {
+            padding: 20px 0;
+            background: #f4f4f4;
+        }
+        section#main .content {
+            float: left;
+            width: 70%;
+        }
+        section#main .sidebar {
+            float: right;
+            width: 30%;
+            background: #e4e4e4;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        footer {
+            background: #333333;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Optum UHG</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="container">
+            <h1>Understanding the Tri-Score System</h1>
+            <p>Empowering Insurance Agents with Multi-Dimensional Risk Assessment</p>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <div class="content">
+                <h2>Comprehensive Risk Assessment</h2>
+                <p>The Risk Score, utilizing the advanced RandomQuadraticEncoder stack, provides a nuanced view of potential risks, enabling agents to pinpoint specific risk factors associated with fraud, abuse, or errors in provider activities.</p>
+
+                <h2>Scope of Practice Verification</h2>
+                <p>The Out-of-Scope Probability score, powered by the CatTransformer stack, is essential for verifying that a provider's services are within their professional scope, ensuring the legitimacy of their practice and safeguarding against misrepresentation.</p>
+
+                <h2>Normative Behavior Analysis</h2>
+                <p>The Outlier Score, with the AutoIsolationForestTransformer stack, identifies significant deviations from standard practice patterns, highlighting outliers that often indicate problematic behavior that requires further investigation.</p>
+            </div>
+            <div class="sidebar">
+                <h3>Tri-Score Benefits:</h3>
+                <ul>
+                    <li>Enhanced decision-making accuracy</li>
+                    <li>Multi-dimensional risk analysis</li>
+                    <li>Improved detection of fraud and abuse</li>
+                    <li>Greater confidence in case prioritization</li>
+                    <li>Dynamic and robust agent workflow</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Optum UHG &copy; 2023. Empowering agents with intelligent solutions.</p>
+        </div>
+    </footer>
+</body>
+</html>
