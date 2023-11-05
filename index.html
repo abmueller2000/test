@@ -4,109 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POD Ensemble Method Documentation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #0072ce;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #030303 3px solid;
-        }
-        header a {
-            color: #ffffff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-        header li {
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-        header #branding {
-            float: left;
-        }
-        header #branding h1 {
-            margin: 0;
-        }
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-        header .highlight, header .current a {
-            color: #e9ff70;
-            font-weight: bold;
-        }
-        header a:hover {
-            color: #ffffff;
-            font-weight: bold;
-        }
-        .banner {
-            padding: 40px 0;
-            background: #e4f1fe;
-            color: #000;
-            text-align: center;
-        }
-        .banner h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-        section#main {
-            padding: 20px 0;
-            background: #f4f4f4;
-        }
-        footer {
-            background: #333333;
-            color: #ffffff;
-            text-align: center;
-            padding: 30px 0;
-        }
-        footer p {
-            margin: 0;
-        }
-        .navigation {
-            background: #e4e4e4;
-            padding: 20px;
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 200px;
-        }
-        .navigation ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .navigation li {
-            padding: 10px 0;
-        }
-        .navigation a {
-            color: #333;
-            text-decoration: none;
-        }
-        .main-content {
-            margin-left: 220px; /* Added margin to avoid overlap with navigation */
-        }
-    </style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
+        <div id="menu-icon" onclick="toggleMenu()">☰</div>
         <div class="container">
             <div id="branding">
-                <h1>Optum UHG</h1>
             </div>
         </div>
     </header>
@@ -146,5 +50,18 @@
             </div>
         </footer>
     </div>
+<script>
+function toggleMenu() {
+    var navigation = document.querySelector('.navigation');
+    navigation.classList.toggle('active');
+    
+    var content = document.querySelector('.main-content');
+    if (navigation.classList.contains('active')) {
+        content.style.marginLeft = '200px';
+    } else {
+        content.style.marginLeft = '0';
+    }
+}
+</script>
 </body>
 </html>
