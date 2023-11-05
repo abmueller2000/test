@@ -15,9 +15,14 @@ function loadContent(containerId, contentFile) {
         .then(response => response.text())
         .then(data => {
             document.getElementById(containerId).innerHTML = data;
+            // After the content is loaded, check if it's the triscore dashboard content
+            if (contentFile === 'triscore-dashboard-content.html') {
+                loadProvidersData(); // Load the providers data for the table
+            }
         })
         .catch(error => console.error('Error loading content:', error));
 }
+
 
 // Optional: Initialize with default content
 document.addEventListener('DOMContentLoaded', function() {
