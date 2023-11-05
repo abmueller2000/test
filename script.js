@@ -78,11 +78,19 @@ function populateTable(providersData) {
 }
 
 // Fetch the providers data from the JSON file and populate the table
-function loadProvidersData() {
-  fetch('providers.json')
-    .then(response => response.json())
-    .then(data => populateTable(data))
-    .catch(error => console.error('Error loading providers data:', error));
+async function loadProvidersData() {
+  try {
+    const response = await fetch('providers.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      const data = await response.json();
+      populateTable(data);
+      console.log('Providers data loaded successfully');
+    }
+  } catch (error) {
+    console.error('Error loading providers data:', error);
+  }
 }
 
 // Call the function to load and populate the table on page load
