@@ -6,7 +6,9 @@ body {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    padding-left: 20px; /* Added padding to the left */
 }
+
 header {
     background: #0072ce;
     color: #fff;
