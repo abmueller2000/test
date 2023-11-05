@@ -5,7 +5,7 @@ body {
 
 .container {
     width: 80%;
-    margin: 20px;
+    margin: auto;
     overflow: hidden;
 }
 
@@ -93,6 +93,7 @@ footer p {
 .main-content {
     transition: margin-left 0.3s; /* Animate the margin property */
     margin-left: 0; /* No additional margin when navigation is not active */
+    padding-left: 20px; /* Add padding to prevent content from being cut off */
 }
 
 .navigation.active + .main-content {
@@ -134,6 +135,7 @@ footer p {
 
     /* Adjust the .main-content for small screens when navigation is not active */
     .main-content {
-        margin-left: 20; /* Ensure it's not pushed to the right on small screens */
+        margin-left: 0; /* Ensure it's not pushed to the right on small screens */
+        padding-left: 10px; /* Adjust padding for small screens */
     }
 }
