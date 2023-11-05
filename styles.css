@@ -58,15 +58,30 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* Hide the navigation by default */
 .navigation {
     background: #e4e4e4;
     padding: 20px;
     position: fixed;
-    left: 0;
+    left: -220px; /* Hide off-screen */
     top: 0;
     bottom: 0;
     width: 200px;
+    transition: left 0.3s; /* Animate the left property */
+    overflow-y: auto; /* Enable scrolling on small screens */
 }
+
+/* When navigation is active, slide in */
+.navigation.active {
+    left: 0; /* Slide in */
+}
+
+/* Adjust the .main-content when navigation is active */
+.main-content.active {
+    margin-left: 200px;
+}
+
 .navigation ul {
     list-style: none;
     padding: 0;
@@ -79,23 +94,6 @@ footer p {
     color: #333;
     text-decoration: none;
 }
-.main-content {
-    margin-left: 220px; /* Added margin to avoid overlap with navigation */
-}
-
-
-#menu-icon {
-    cursor: pointer;
-    display: none; /* Hidden by default, will be shown on smaller screens */
-    font-size: 30px;
-    padding: 10px;
-}
-
-/* Initially hide the navigation */
-.navigation {
-    width: 0;
-    transition: width 0.3s;
-}
 
 /* Full-width navigation menu when it's active */
 .navigation.active {
@@ -103,9 +101,17 @@ footer p {
 }
 
 @media screen and (max-width: 768px) {
-    #menu-icon {
-        display: block; /* Show the menu icon on smaller screens */
-    }
+    /* Position the menu icon */
+#menu-icon {
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000; /* Ensure it's above other elements */
+    font-size: 30px;
+    padding: 10px;
+    display: block; /* Always show the menu icon */
+}
 
     .main-content {
         margin-left: 0; /* Remove the margin when the menu is not active */
