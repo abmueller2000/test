@@ -165,4 +165,42 @@ footer p {
     padding: 10px;
     display: block; /* Always show the menu icon */
 }
+/* Tri-Score Dashboard Styles */
+.triscore-container {
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.triscore-h1 {
+  color: #005eb8; /* UHG Blue */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.triscore-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.triscore-th, .triscore-td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.triscore-th {
+  background-color: #005eb8; /* UHG Blue */
+  color: #fff;
+  cursor: pointer; /* Indicates the header is clickable */
+}
+
+/* Pastel color-coded risk level classes */
+.very-high-risk { background-color: #ff6961; } /* Pastel Red */
+.high-risk { background-color: #ffb480; } /* Pastel Orange */
+.moderate-risk { background-color: #fdfd96; } /* Pastel Yellow */
+.low-risk { background-color: #77dd77; } /* Pastel Green */
+.very-low-risk { background-color: #c1e1c1; } /* Lighter Pastel Green */
 
