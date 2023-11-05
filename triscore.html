@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BH Providers Tri-Score Dashboard</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+  h1 {
+    color: #005eb8; /* UHG Blue */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  th {
+    background-color: #005eb8; /* UHG Blue */
+    color: #fff;
+  }
+  /* Pastel color-coded risk level classes */
+  .very-high-risk { background-color: #ff6961; } /* Pastel Red */
+  .high-risk { background-color: #ffb480; } /* Pastel Orange */
+  .moderate-risk { background-color: #fdfd96; } /* Pastel Yellow */
+  .low-risk { background-color: #77dd77; } /* Pastel Green */
+  .very-low-risk { background-color: #c1e1c1; } /* Lighter Pastel Green */
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>BH Providers Tri-Score Dashboard</h1>
+  <table id="providersTable">
+    <thead>
+      <tr>
+        <th>Provider Name</th>
+        <th>Type</th>
+        <th>Risk Score</th>
+        <th>Out-of-Scope Probability</th>
+        <th>Outlier Score</th>
+        <th>Total Paid</th>
+        <th>Days >8hr day</th>
+        <th>Risk Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Provider rows will be inserted by JavaScript -->
+    </tbody>
+  </table>
+</div>
+<script>
+  // Sample data for providers
+  providersData = [
+    { name: 'John Doe', type: 'MD', riskScore: 4.5, outOfScopeProbability: 3.0, outlierScore: 2.5, totalPaid: 10000, daysOver8Hours: 5 },
+    { name: 'Jane Smith', type: 'DO', riskScore: 3.8, outOfScopeProbability: 2.7, outlierScore: 3.1, totalPaid: 8500, daysOver8Hours: 2 },
+    { name: 'Emily Jones', type: 'PA', riskScore: 4.2, outOfScopeProbability: 3.6, outlierScore: 4.0, totalPaid: 12000, daysOver8Hours: 7 },
+    { name: 'Michael Brown', type: 'NP', riskScore: 2.9, outOfScopeProbability: 3.2, outlierScore: 2.8, totalPaid: 7600, daysOver8Hours: 3 },
+    { name: 'Jessica Garcia', type: 'MD', riskScore: 3.5, outOfScopeProbability: 4.1, outlierScore: 3.9, totalPaid: 9400, daysOver8Hours: 4 },
+    { name: 'William Davis', type: 'DO', riskScore: 2.3, outOfScopeProbability: 2.0, outlierScore: 2.6, totalPaid: 6700, daysOver8Hours: 1 },
+    { name: 'Elizabeth Miller', type: 'PA', riskScore: 4.7, outOfScopeProbability: 4.3, outlierScore: 4.5, totalPaid: 15000, daysOver8Hours: 8 },
+    { name: 'David Wilson', type: 'NP', riskScore: 3.3, outOfScopeProbability: 3.7, outlierScore: 3.4, totalPaid: 8900, daysOver8Hours: 6 },
+    { name: 'Sophia Anderson', type: 'MD', riskScore: 2.8, outOfScopeProbability: 2.5, outlierScore: 3.0, totalPaid: 7200, daysOver8Hours: 2 },
+    { name: 'James Thomas', type: 'DO', riskScore: 3.0, outOfScopeProbability: 3.1, outlierScore: 3.2, totalPaid: 11000, daysOver8Hours: 5 }
+  ];
+
+  // Function to calculate the average score and determine risk level
+  function calculateRiskLevel(riskScore, outOfScopeProbability, outlierScore) {
+    const average = (riskScore + outOfScopeProbability + outlierScore) / 3;
+    if (average >= 4) return 'very-high-risk';
+    if (average >= 3) return 'high-risk';
+    if (average >= 2) return 'moderate-risk';
+    if (average >= 1) return 'low-risk';
+    return 'very-low-risk';
+  }
+
+  // Function to populate the table with provider data
+  function populateTable() {
+    const tableBody = document.getElementById('providersTable').getElementsByTagName('tbody')[0];
+    providersData.forEach(provider => {
+      const riskLevelClass = calculateRiskLevel(provider.riskScore, provider.outOfScopeProbability, provider.outlierScore);
+      const row = tableBody.insertRow();
+      row.className = riskLevelClass; // Apply the color-coded class
+      row.innerHTML = `
+        <td>${provider.name}</td>
+        <td>${provider.type}</td>
+        <td>${provider.riskScore} (${(provider.riskScore / 5 * 100).toFixed(1)}%)</td>
+        <td>${provider.outOfScopeProbability} (${(provider.outOfScopeProbability / 5 * 100).toFixed(1)}%)</td>
+        <td>${provider.outlierScore} (${(provider.outlierScore / 5 * 100).toFixed(1)}%)</td>
+        <td>$${provider.totalPaid.toLocaleString()}</td>
+        <td>${provider.daysOver8Hours}</td>
+        <td>${riskLevelClass.replace(/-/g, ' ').toUpperCase()}</td>
+      `;
+    });
+  }
+
+  // Call the function to populate the table on page load
+  window.onload = populateTable;
+</script>
+</body>
+</html>
