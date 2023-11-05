@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+header {
+    background: #0072ce;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #030303 3px solid;
+}
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+header ul {
+    padding: 0;
+    list-style: none;
+}
+header li {
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+header #branding {
+    float: left;
+}
+header #branding h1 {
+    margin: 0;
+}
+.banner {
+    padding: 40px 0;
+    background: #e4f1fe;
+    color: #000;
+    text-align: center;
+}
+.banner h1 {
+    margin: 0;
+    font-size: 36px;
+}
+section#main {
+    padding: 20px 0;
+    background: #f4f4f4;
+    overflow: auto; /* Allows scrolling */
+}
+footer {
+    background: #333333;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 0;
+}
+footer p {
+    margin: 0;
+}
+.navigation {
+    background: #e4e4e4;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+}
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.navigation li {
+    padding: 10px 0;
+}
+.navigation a {
+    color: #333;
+    text-decoration: none;
+}
+.main-content {
+    margin-left: 220px; /* Added margin to avoid overlap with navigation */
+}
+
+
+#menu-icon {
+    cursor: pointer;
+    display: none; /* Hidden by default, will be shown on smaller screens */
+    font-size: 30px;
+    padding: 10px;
+}
+
+/* Initially hide the navigation */
+.navigation {
+    width: 0;
+    transition: width 0.3s;
+}
+
+/* Full-width navigation menu when it's active */
+.navigation.active {
+    width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Show the menu icon on smaller screens */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove the margin when the menu is not active */
+    }
+}
