@@ -91,14 +91,21 @@
             box-sizing: border-box;
         }
         .sidebar ul {
+            list-style-type: none; /* Remove default bullets */
             padding: 0;
-            list-style: none;
+            margin: 0; /* Remove default margin */
         }
         .sidebar li {
-            margin-bottom: 15px; /* Increased space between list items */
+            margin-bottom: 15px; /* Space between items */
+            padding-left: 1.2em; /* Space for the star bullet */
+            position: relative; /* Positioning context for pseudo-element */
         }
-
-      
+        .sidebar li::before {
+            content: '⭐️'; /* Star character */
+            position: absolute;
+            left: 0; /* Align to the left */
+            top: 0; /* Align to the top */
+        }
         
     </style>
 </head>
