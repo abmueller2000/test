@@ -1,0 +1,60 @@
+<div class="technical-documentation">
+    <h2>Technical Documentation: POD Ensemble Method</h2>
+    <p>The POD (Predictive Outlier Detection) Ensemble is a comprehensive system designed to identify and score anomalous behavior in healthcare claims data, enhancing the detection of potential fraud, waste, and abuse (FWA).</p>
+    
+    <h3>1. Risk Score: RandomQuadraticEncoder Stack</h3>
+    <h4>Components:</h4>
+    <ul>
+        <li><strong>Random Forest</strong>: A machine learning algorithm that builds multiple decision trees and merges them together to obtain a more accurate and stable prediction.</li>
+        <li><strong>Quadratic Discriminant Analysis (QDA)</strong>: A statistical technique that uses quadratic surfaces to separate measurements of two or more classes of objects or events.</li>
+        <li><strong>Auto-Encoder</strong>: A type of neural network used for unsupervised learning of efficient codings.</li>
+    </ul>
+    <h4>Methodology:</h4>
+    <p>The Random Forest algorithm is trained on a feature set extracted from claims data. QDA is applied to model the probability distributions of the features. An Auto-Encoder is utilized for feature extraction and dimensionality reduction.</p>
+    <h4>References:</h4>
+    <ul>
+        <li>Cutler et al. (2012) "Random Forests for Classification in Ecology"</li>
+        <li>McLachlan (2004) "Discriminant Analysis and Statistical Pattern Recognition"</li>
+        <li>Sakurada and Yairi (2014) "Anomaly Detection Using Autoencoders with Nonlinear Dimensionality Reduction"</li>
+    </ul>
+
+    <h3>2. Out-of-Scope Probability: CatTransformer Stack</h3>
+    <h4>Components:</h4>
+    <ul>
+        <li><strong>CatBoost</strong>: An algorithm that handles categorical features and excels in classification tasks.</li>
+        <li><strong>TabTransformer</strong>: A deep learning model designed for transforming tabular data.</li>
+    </ul>
+    <h4>Methodology:</h4>
+    <p>CatBoost processes categorical data to predict the likelihood that a claim falls outside the typical scope of practice. The TabTransformer captures complex relationships between features.</p>
+    <h4>References:</h4>
+    <ul>
+        <li>Dorogush et al. (2018) "CatBoost: unbiased boosting with categorical features"</li>
+        <li>Huang et al. (2020) "TabTransformer: Tabular Data Modeling Using Contextual Embeddings"</li>
+    </ul>
+
+    <h3>3. Outlier Score: AutoIsolationForestTransformer Stack</h3>
+    <h4>Components:</h4>
+    <ul>
+        <li><strong>Auto-Encoder</strong>: Used for encoding high-dimensional data into a lower-dimensional space.</li>
+        <li><strong>Isolation Forest</strong>: An algorithm that isolates anomalies instead of profiling normal data points.</li>
+        <li><strong>Transformer</strong>: A model architecture that uses self-attention mechanisms.</li>
+    </ul>
+    <h4>Methodology:</h4>
+    <p>The Auto-Encoder reduces the dimensionality of the data, which is then fed into the Isolation Forest. The Transformer architecture processes sequences of claims to detect patterns and anomalies over time.</p>
+    <h4>References:</h4>
+    <ul>
+        <li>Liu et al. (2008) "Isolation Forest"</li>
+        <li>Vaswani et al. (2017) "Attention is All You Need"</li>
+    </ul>
+
+    <h3>Integration and Operation</h3>
+    <h4>System Requirements:</h4>
+    <p>Adequate computational resources, sufficient storage, and software dependencies such as Python, scikit-learn, CatBoost, TensorFlow, or PyTorch are required.</p>
+    <h4>Deployment:</h4>
+    <p>The models are trained, validated, and tested on historical claims data and integrated into the existing claims processing workflow with continuous monitoring and updating mechanisms.</p>
+    <h4>Maintenance:</h4>
+    <p>Regular retraining of models with new data, performance tracking, and system updates with the latest algorithms and methodologies are essential.</p>
+
+    <h3>Conclusion</h3>
+    <p>The POD Ensemble is a robust and dynamic system, designed to adapt to the evolving landscape of healthcare claims and fraud detection. It offers a multi-faceted approach to risk assessment, ensuring that suspicious activities are identified with high accuracy.</p>
+</div>
