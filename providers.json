@@ -1,0 +1,21 @@
+[
+  {
+    "name": "John Doe",
+    "type": "PhD",
+    "riskScore": 4.5,
+    "outOfScopeProbability": 3.0,
+    "outlierScore": 2.5,
+    "totalPaid": 10000,
+    "daysOver8Hours": 5
+  },
+  {
+    "name": "Jackson Allen",
+    "type": "LCSW",
+    "riskScore": 4.3,
+    "outOfScopeProbability": 4.2,
+    "outlierScore": 4.4,
+    "totalPaid": 12300,
+    "daysOver8Hours": 8
+  }
+  // ... other providers ...
+]
