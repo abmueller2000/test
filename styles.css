@@ -7,6 +7,7 @@ body {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    padding-left: 0; /* Remove padding to prevent content from being cut off */
 }
 
 header {
@@ -89,10 +90,10 @@ footer p {
     left: 0; /* Slide in */
 }
 
-/* Adjust the .main-content when navigation is active */
+/* When navigation is not active, .main-content should have padding to prevent content from being cut off */
 .main-content {
     transition: margin-left 0.3s; /* Animate the margin property */
-    margin-left: 0; /* No additional margin when navigation is not active */
+    margin-left: 0; /* No additional margin */
     padding-left: 20px; /* Add padding to prevent content from being cut off */
 }
 
@@ -139,3 +140,8 @@ footer p {
         padding-left: 10px; /* Adjust padding for small screens */
     }
 }
+
+.main-content.active {
+    margin-left: 220px; /* Adjust this value as needed */
+}
+
