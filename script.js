@@ -48,72 +48,42 @@ document.addEventListener('DOMContentLoaded', function() {
 ];
 
   // Function to calculate the average score and determine risk level
-  function calculateRiskLevel(riskScore, outOfScopeProbability, outlierScore) {
-    const average = (riskScore + outOfScopeProbability + outlierScore) / 3;
-    if (average >= 4) return 'very-high-risk';
-    if (average >= 3) return 'high-risk';
-    if (average >= 2) return 'moderate-risk';
-    if (average >= 1) return 'low-risk';
-    return 'very-low-risk';
-  }
+function calculateRiskLevel(riskScore, outOfScopeProbability, outlierScore) {
+  const average = (riskScore + outOfScopeProbability + outlierScore) / 3;
+  if (average >= 4) return 'very-high-risk';
+  if (average >= 3) return 'high-risk';
+  if (average >= 2) return 'moderate-risk';
+  if (average >= 1) return 'low-risk';
+  return 'very-low-risk';
+}
 
-  // Function to populate the table with provider data
-  function populateTable() {
-    const tableBody = document.getElementById('providersTable').getElementsByTagName('tbody')[0];
-    providersData.forEach(provider => {
-      const riskLevelClass = calculateRiskLevel(provider.riskScore, provider.outOfScopeProbability, provider.outlierScore);
-      const row = tableBody.insertRow();
-      row.className = riskLevelClass; // Apply the color-coded class
-      row.innerHTML = `
-        <td>${provider.name}</td>
-        <td>${provider.type}</td>
-        <td>${provider.riskScore} (${(provider.riskScore / 5 * 100).toFixed(1)}%)</td>
-        <td>${provider.outOfScopeProbability} (${(provider.outOfScopeProbability / 5 * 100).toFixed(1)}%)</td>
-        <td>${provider.outlierScore} (${(provider.outlierScore / 5 * 100).toFixed(1)}%)</td>
-        <td>$${provider.totalPaid.toLocaleString()}</td>
-        <td>${provider.daysOver8Hours}</td>
-        <td>${riskLevelClass.replace(/-/g, ' ').toUpperCase()}</td>
-      `;
-    });
-  }
+// Function to populate the table with provider data
+function populateTable(providersData) {
+  const tableBody = document.getElementById('triscore-providersTable').getElementsByTagName('tbody')[0];
+  providersData.forEach(provider => {
+    const riskLevelClass = calculateRiskLevel(provider.riskScore, provider.outOfScopeProbability, provider.outlierScore);
+    const row = tableBody.insertRow();
+    row.className = riskLevelClass; // Apply the color-coded class
+    row.innerHTML = `
+      <td>${provider.name}</td>
+      <td>${provider.type}</td>
+      <td>${provider.riskScore} (${(provider.riskScore / 5 * 100).toFixed(1)}%)</td>
+      <td>${provider.outOfScopeProbability} (${(provider.outOfScopeProbability / 5 * 100).toFixed(1)}%)</td>
+      <td>${provider.outlierScore} (${(provider.outlierScore / 5 * 100).toFixed(1)}%)</td>
+      <td>$${provider.totalPaid.toLocaleString()}</td>
+      <td>${provider.daysOver8Hours}</td>
+      <td>${riskLevelClass.replace(/-/g, ' ').toUpperCase()}</td>
+    `;
+  });
+}
 
-  // Call the function to populate the table on page load
-  window.onload = populateTable;
+// Fetch the providers data from the JSON file and populate the table
+function loadProvidersData() {
+  fetch('providers.json')
+    .then(response => response.json())
+    .then(data => populateTable(data))
+    .catch(error => console.error('Error loading providers data:', error));
+}
 
-  // Function to sort the table
-  function sortTable(columnIndex) {
-    const table = document.getElementById('providersTable');
-    let rows, switching, i, x, y, shouldSwitch;
-    switching = true;
-    // Make a loop that will continue until no switching has been done
-    while (switching) {
-      // Start by saying: no switching is done
-      switching = false;
-      rows = table.rows;
-      // Loop through all table rows (except the first, which contains table headers)
-      for (i = 1; i < (rows.length - 1); i++) {
-        // Start by saying there should be no switching
-        shouldSwitch = false;
-        // Get the two elements you want to compare, one from current row and one from the next
-        x = rows[i].getElementsByTagName("TD")[columnIndex];
-        y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
-        // Check if the two rows should switch place, based on the direction, asc or desc
-        if (columnIndex >= 2 && columnIndex <= 6) { // For numeric columns
-          if (parseFloat(x.textContent) > parseFloat(y.textContent)) {
-            shouldSwitch = true;
-            break;
-          }
-        } else { // For text columns
-          if (x.textContent.toLowerCase() > y.textContent.toLowerCase()) {
-            shouldSwitch = true;
-            break;
-          }
-        }
-      }
-      if (shouldSwitch) {
-        // If a switch has been marked, make the switch and mark that a switch has been done
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
-  }
+// Call the function to load and populate the table on page load
+document.addEventListener('DOMContentLoaded', loadProvidersData);
