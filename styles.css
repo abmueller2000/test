@@ -3,11 +3,12 @@ body {
     line-height: 1.6;
 }
 
+/* Ensure that the .container class does not have excessive padding or margin on the left */
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
-    padding-left: 0; /* Remove padding to prevent content from being cut off */
+    padding-left: 0; 
 }
 
 header {
@@ -72,6 +73,13 @@ footer p {
     margin: 0;
 }
 
+/* When navigation is not active, .main-content should have padding to prevent content from being cut off */
+.main-content {
+    transition: margin-left 0.3s; /* Animate the margin property */
+    margin-left: 0; /* No additional margin */
+    padding-left: 20px; /* Add padding to prevent content from being cut off */
+}
+
 /* Hide the navigation by default */
 .navigation {
     background: #e4e4e4;
@@ -90,15 +98,16 @@ footer p {
     left: 0; /* Slide in */
 }
 
+/* When navigation is active, add margin to .main-content */
+.navigation.active + .main-content {
+    margin-left: 220px; /* This should match the width of the navigation */
+}
+
 /* When navigation is not active, .main-content should have padding to prevent content from being cut off */
 .main-content {
     transition: margin-left 0.3s; /* Animate the margin property */
     margin-left: 0; /* No additional margin */
     padding-left: 20px; /* Add padding to prevent content from being cut off */
-}
-
-.navigation.active + .main-content {
-    margin-left: 220px; /* This should match the width of the navigation */
 }
 
 .navigation ul {
@@ -137,7 +146,7 @@ footer p {
     /* Adjust the .main-content for small screens when navigation is not active */
     .main-content {
         margin-left: 0; /* Ensure it's not pushed to the right on small screens */
-        padding-left: 10px; /* Adjust padding for small screens */
+        padding-left: 30px; /* Adjust padding for small screens */
     }
 }
 
