@@ -93,5 +93,8 @@ async function loadProvidersData() {
   }
 }
 
-// Call the function to load and populate the table on page load
-document.addEventListener('DOMContentLoaded', loadProvidersData);
+document.addEventListener('DOMContentLoaded', function() {
+    loadContent('content-container', 'triscore-dashboard-content.html');
+    loadProvidersData(); // This will load the providers data from the JSON file
+});
+
