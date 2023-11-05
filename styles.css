@@ -6,7 +6,7 @@ body {
     width: 80%;
     margin: auto;
     overflow: hidden;
-    padding-left: 20px; /* Added padding to the left */
+    padding-left: 30px; /* Added padding to the left */
 }
 
 header {
@@ -81,8 +81,9 @@ footer p {
 
 /* Adjust the .main-content when navigation is active */
 .main-content.active {
-    margin-left: 200px;
+    margin-left: 220px; /* Adjust this value as needed */
 }
+
 
 .navigation ul {
     list-style: none;
