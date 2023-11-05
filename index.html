@@ -4,52 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POD Ensemble Method Documentation</title>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div id="menu-icon" onclick="toggleMenu()">☰</div>
         <div class="container">
             <div id="branding">
+                <h1>Optum UHG</h1>
             </div>
         </div>
     </header>
 
     <aside class="navigation">
-    <ul>
-        <li><a href="#" onclick="loadContent('content-container', 'home-content.html'); return false;">Home</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'executive-summary-content.html'); return false;">Executive Summary</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'technical-documentation-content.html'); return false;">Technical Documentation</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'model-performance-reports-content.html'); return false;">Model Performance Reports</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'implementation-plan-content.html'); return false;">Implementation Plan</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'risk-assessment-content.html'); return false;">Risk Assessment</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'regulatory-compliance-content.html'); return false;">Regulatory Compliance</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'user-documentation-content.html'); return false;">User Documentation</a></li>
-        <li><a href="#" onclick="loadContent('content-container', 'appendices-content.html'); return false;">Appendices</a></li>
-    </ul>
-</aside>
+        <ul>
+            <li><a href="#" onclick="loadContent('content-container', 'home-content.html'); return false;">Home</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'executive-summary-content.html'); return false;">Executive Summary</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'technical-documentation-content.html'); return false;">Technical Documentation</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'model-performance-reports-content.html'); return false;">Model Performance Reports</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'implementation-plan-content.html'); return false;">Implementation Plan</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'risk-assessment-content.html'); return false;">Risk Assessment</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'regulatory-compliance-content.html'); return false;">Regulatory Compliance</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'user-documentation-content.html'); return false;">User Documentation</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'appendices-content.html'); return false;">Appendices</a></li>
+        </ul>
+    </aside>
 
-    <div class="main-content">
-        <section class="banner">
-            <div class="container">
-                <h1>Welcome to the POD Ensemble Method Documentation</h1>
-                <p>Empowering Healthcare Analytics with Advanced Machine Learning</p>
-            </div>
-        </section>
-
-        <section id="main">
-            <div class="container">
-                <h2>Introduction to the POD Ensemble Method</h2>
-                <p>The POD Ensemble Method is a cutting-edge analytical tool designed to enhance the detection and analysis of anomalous behavior in healthcare claims data. This comprehensive documentation provides stakeholders with all necessary information, from technical details to user guidelines.</p>
-            </div>
-        </section>
-
-        <footer>
-            <div class="container">
-                <p>Optum UHG &copy; 2023. Empowering healthcare with intelligent solutions.</p>
-            </div>
-        </footer>
+    <div id="content-container" class="main-content">
+        <!-- Dynamic content will be loaded here -->
     </div>
-<script src="script.js"></script>
+
+    <footer>
+        <div class="container">
+            <p>Optum UHG &copy; 2023. Empowering healthcare with intelligent solutions.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
