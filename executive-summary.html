@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary - POD Ensemble Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #0072ce;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #030303 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        .banner {
+            padding: 40px 0;
+            background: #e4f1fe;
+            color: #000;
+            text-align: center;
+        }
+        .banner h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        section#main {
+            padding: 20px 0;
+            background: #f4f4f4;
+        }
+        footer {
+            background: #333333;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        .navigation {
+            background: #e4e4e4;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+        }
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .navigation li {
+            padding: 10px 0;
+        }
+        .navigation a {
+            color: #333;
+            text-decoration: none;
+        }
+        .main-content {
+            margin-left: 220px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Optum UHG</h1>
+            </div>
+        </div>
+    </header>
+
+    <aside class="navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="current"><a href="executive-summary.html">Executive Summary</a></li>
+            <li><a href="technical-documentation.html">Technical Documentation</a></li>
+            <li><a href="model-performance-reports.html">Model Performance Reports</a></li>
+            <li><a href="implementation-plan.html">Implementation Plan</a></li>
+            <li><a href="risk-assessment.html">Risk Assessment</a></li>
+            <li><a href="regulatory-compliance.html">Regulatory Compliance</a></li>
+            <li><a href="user-documentation.html">User Documentation</a></li>
+            <li><a href="appendices.html">Appendices</a></li>
+        </ul>
+    </aside>
+
+    <div class="main-content">
+        <section class="banner">
+            <div class="container">
+                <h1>Executive Summary</h1>
+                <p>POD Ensemble Method</p>
+            </div>
+        </section>
+
+        <section id="main">
+            <div class="container">
+                <h2>POD Ensemble Method: A New Frontier in Claims Analysis</h2>
+                <p>The POD (Predictive Outlier Detection) Ensemble Method signifies a leap forward in the analytical capabilities for detecting suspicious activities within healthcare claims data. By harnessing the power of advanced machine learning stacks, the POD Ensemble provides a multi-faceted approach to risk assessment.</p>
+                <ul>
+                    <li><strong>Risk Score:</strong> Utilizes the RandomQuadraticEncoder stack, combining Random Forest, Quadratic Discriminant Analysis, and an Auto-Encoder to evaluate and score potential risks.</li>
+                    <li><strong>Out-of-Scope Probability:</strong> Employs the CatTransformer stack, leveraging CatBoost and TabTransformer to identify deviations from a provider's typical scope of practice.</li>
+                    <li><strong>Outlier Score:</strong> Applies the AutoIsolationForestTransformer stack, integrating an Auto-Encoder, Isolation Forest, and Transformer to detect significant behavioral deviations.</li>
+                </ul>
+                <p>The implementation of the POD Ensemble Method is not merely theoretical but a practical and research-backed solution that integrates seamlessly with existing operational systems, offering a user-friendly interface and robust detection mechanisms.</p>
+                <p>Adopting the POD Ensemble Method equips organizations with a state-of-the-art tool for maintaining the integrity of claims processing and protecting against financial losses due to fraud, abuse, or errors.</p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>Optum UHG &copy; 2023. Pioneering intelligent healthcare solutions.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
