@@ -20,3 +20,12 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  // Assuming providersData is defined in the global scope of script.js
+  (function() {
+    if (window.populateTable && window.providersData) {
+      populateTable(window.providersData);
+    }
+  })();
+</script>
