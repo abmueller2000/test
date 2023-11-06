@@ -1,168 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BH Providers Tri-Score Dashboard</title>
-<style>
-  /* Existing styles... */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-  }
-  .container {
-    max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
-  }
-  h1 {
-    color: #005eb8; /* UHG Blue */
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  th {
-    background-color: #005eb8; /* UHG Blue */
-    color: #fff;
-    cursor: pointer; /* Indicates the header is clickable */
-  }
-  /* Pastel color-coded risk level classes */
-  .very-high-risk { background-color: #ff6961; } /* Pastel Red */
-  .high-risk { background-color: #ffb480; } /* Pastel Orange */
-  .moderate-risk { background-color: #fdfd96; } /* Pastel Yellow */
-  .low-risk { background-color: #77dd77; } /* Pastel Green */
-  .very-low-risk { background-color: #c1e1c1; } /* Lighter Pastel Green */
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BH Providers Tri-Score Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #005eb8; /* UHG Blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #005eb8; /* UHG Blue */
+            color: #fff;
+            cursor: pointer; /* Indicates the header is clickable */
+        }
+        .very-high-risk { background-color: #ff6961; } /* Pastel Red */
+        .high-risk { background-color: #ffb480; } /* Pastel Orange */
+        .moderate-risk { background-color: #fdfd96; } /* Pastel Yellow */
+        .low-risk { background-color: #77dd77; } /* Pastel Green */
+        .very-low-risk { background-color: #c1e1c1; } /* Lighter Pastel Green */
+        /* Menu styles */
+        header {
+            background: #005eb8;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        #menu-icon {
+            cursor: pointer;
+            display: none;
+        }
+        .navigation {
+            background: #333;
+            color: white;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            overflow-y: auto;
+            transition: left 0.3s;
+        }
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+        }
+        .navigation ul li a {
+            color: white;
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+        .navigation ul li a:hover {
+            background: #005eb8;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+                padding: 10px;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+            .navigation {
+                top: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <h1>BH Providers Tri-Score Dashboard</h1>
-  <table id="providersTable">
-    <thead>
-      <tr>
-        <th onclick="sortTable(0)">Provider Name</th>
-        <th onclick="sortTable(1)">Type</th>
-        <th onclick="sortTable(2)">Risk Score</th>
-        <th onclick="sortTable(3)">Out-of-Scope Probability</th>
-        <th onclick="sortTable(4)">Outlier Score</th>
-        <th onclick="sortTable(5)">Total Paid</th>
-        <th onclick="sortTable(6)">Days >8hr day</th>
-        <th>Risk Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Provider rows will be inserted by JavaScript -->
-    </tbody>
-  </table>
-</div>
-<script>
-  // Sample data for providers
-  const providersData = [
-  { name: 'John Doe', type: 'PhD', riskScore: 4.5, outOfScopeProbability: 3.0, outlierScore: 2.5, totalPaid: 10000, daysOver8Hours: 5 },
-  { name: 'Jane Smith', type: 'PsyD', riskScore: 3.8, outOfScopeProbability: 2.7, outlierScore: 3.1, totalPaid: 8500, daysOver8Hours: 2 },
-  { name: 'Emily Jones', type: 'LPC', riskScore: 4.2, outOfScopeProbability: 3.6, outlierScore: 4.0, totalPaid: 12000, daysOver8Hours: 7 },
-  { name: 'Michael Brown', type: 'LCSW', riskScore: 2.9, outOfScopeProbability: 3.2, outlierScore: 2.8, totalPaid: 7600, daysOver8Hours: 3 },
-  { name: 'Jessica Garcia', type: 'MSW', riskScore: 3.5, outOfScopeProbability: 4.1, outlierScore: 3.9, totalPaid: 9400, daysOver8Hours: 4 },
-  { name: 'William Davis', type: 'MFT', riskScore: 2.3, outOfScopeProbability: 2.0, outlierScore: 2.6, totalPaid: 6700, daysOver8Hours: 1 },
-  { name: 'Elizabeth Miller', type: 'EdD', riskScore: 4.7, outOfScopeProbability: 4.3, outlierScore: 4.5, totalPaid: 15000, daysOver8Hours: 8 },
-  { name: 'David Wilson', type: 'MD', riskScore: 3.3, outOfScopeProbability: 3.7, outlierScore: 3.4, totalPaid: 8900, daysOver8Hours: 6 },
-  { name: 'Sophia Anderson', type: 'PhD', riskScore: 2.8, outOfScopeProbability: 2.5, outlierScore: 3.0, totalPaid: 7200, daysOver8Hours: 2 },
-  { name: 'James Thomas', type: 'PsyD', riskScore: 3.0, outOfScopeProbability: 3.1, outlierScore: 3.2, totalPaid: 11000, daysOver8Hours: 5 },
-  { name: 'Olivia Martinez', type: 'LPC', riskScore: 3.2, outOfScopeProbability: 2.8, outlierScore: 3.5, totalPaid: 9800, daysOver8Hours: 4 },
-  { name: 'William Johnson', type: 'LCSW', riskScore: 4.0, outOfScopeProbability: 3.9, outlierScore: 3.8, totalPaid: 10500, daysOver8Hours: 6 },
-  { name: 'Ava Lee', type: 'MSW', riskScore: 2.6, outOfScopeProbability: 2.4, outlierScore: 2.7, totalPaid: 7300, daysOver8Hours: 3 },
-  { name: 'Matthew Harris', type: 'MFT', riskScore: 3.7, outOfScopeProbability: 3.3, outlierScore: 3.6, totalPaid: 9600, daysOver8Hours: 5 },
-  { name: 'Isabella Clark', type: 'EdD', riskScore: 4.1, outOfScopeProbability: 4.0, outlierScore: 4.2, totalPaid: 11400, daysOver8Hours: 7 },
-  { name: 'Ethan Lewis', type: 'MD', riskScore: 2.5, outOfScopeProbability: 2.1, outlierScore: 2.9, totalPaid: 6900, daysOver8Hours: 2 },
-  { name: 'Charlotte Robinson', type: 'PhD', riskScore: 3.4, outOfScopeProbability: 3.5, outlierScore: 3.3, totalPaid: 10200, daysOver8Hours: 4 },
-  { name: 'Daniel Walker', type: 'PsyD', riskScore: 2.7, outOfScopeProbability: 2.9, outlierScore: 2.8, totalPaid: 7500, daysOver8Hours: 3 },
-  { name: 'Mia Hall', type: 'LPC', riskScore: 3.9, outOfScopeProbability: 3.4, outlierScore: 3.7, totalPaid: 9900, daysOver8Hours: 5 },
-  { name: 'Jackson Allen', type: 'LCSW', riskScore: 4.3, outOfScopeProbability: 4.2, outlierScore: 4.4, totalPaid: 12300, daysOver8Hours: 8 }
-];
+    <header>
+        <div id="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="container">
+            <div id="branding">
+                <h1>Optum UHG</h1>
+            </div>
+        </div>
+    </header>
 
-  // Function to calculate the average score and determine risk level
-  function calculateRiskLevel(riskScore, outOfScopeProbability, outlierScore) {
-    const average = (riskScore + outOfScopeProbability + outlierScore) / 3;
-    if (average >= 4) return 'very-high-risk';
-    if (average >= 3) return 'high-risk';
-    if (average >= 2) return 'moderate-risk';
-    if (average >= 1) return 'low-risk';
-    return 'very-low-risk';
-  }
+    <aside class="navigation">
+        <ul>
+            <li><a href="#" onclick="loadContent('content-container', 'home-content.html'); return false;">Home</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'comprehensive-strategy-content.html'); return false;">Comprehensive Strategy</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'triscore-dashboard-content.html'); return false;">Triscore Dashboard</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'executive-summary-content.html'); return false;">Executive Summary</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'technical-documentation-content.html'); return false;">Technical Documentation</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'model-performance-report-content.html'); return false;">Model Performance Report</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'implementation-plan-content.html'); return false;">Implementation Plan</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'risk-assessment-content.html'); return false;">Risk Assessment</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'regulatory-compliance-content.html'); return false;">Regulatory Compliance</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'user-documentation-content.html'); return false;">User Documentation</a></li>
+            <li><a href="#" onclick="loadContent('content-container', 'appendices-content.html'); return false;">Appendices</a></li>
+        </ul>
+    </aside>
 
-  // Function to populate the table with provider data
-  function populateTable() {
-    const tableBody = document.getElementById('providersTable').getElementsByTagName('tbody')[0];
-    providersData.forEach(provider => {
-      const riskLevelClass = calculateRiskLevel(provider.riskScore, provider.outOfScopeProbability, provider.outlierScore);
-      const row = tableBody.insertRow();
-      row.className = riskLevelClass; // Apply the color-coded class
-      row.innerHTML = `
-        <td>${provider.name}</td>
-        <td>${provider.type}</td>
-        <td>${provider.riskScore} (${(provider.riskScore / 5 * 100).toFixed(1)}%)</td>
-        <td>${provider.outOfScopeProbability} (${(provider.outOfScopeProbability / 5 * 100).toFixed(1)}%)</td>
-        <td>${provider.outlierScore} (${(provider.outlierScore / 5 * 100).toFixed(1)}%)</td>
-        <td>$${provider.totalPaid.toLocaleString()}</td>
-        <td>${provider.daysOver8Hours}</td>
-        <td>${riskLevelClass.replace(/-/g, ' ').toUpperCase()}</td>
-      `;
-    });
-  }
+    <div class="container" id="content-container">
+        <h1>BH Providers Tri-Score Dashboard</h1>
+        <table id="providersTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Provider Name</th>
+                    <th onclick="sortTable(1)">Type</th>
+                    <th onclick="sortTable(2)">Risk Score</th>
+                    <th onclick="sortTable(3)">Out-of-Scope Probability</th>
+                    <th onclick="sortTable(4)">Outlier Score</th>
+                    <th onclick="sortTable(5)">Total Paid</th>
+                    <th onclick="sortTable(6)">Days >8hr day</th>
+                    <th>Risk Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Provider rows will be inserted by JavaScript -->
+            </tbody>
+        </table>
+    </div>
 
-  // Call the function to populate the table on page load
-  window.onload = populateTable;
+    <footer>
+        <div class="container">
+            <p>Optum UHG &copy; 2023. Empowering healthcare with intelligent solutions.</p>
+        </div>
+    </footer>
 
-  // Function to sort the table
-  function sortTable(columnIndex) {
-    const table = document.getElementById('providersTable');
-    let rows, switching, i, x, y, shouldSwitch;
-    switching = true;
-    // Make a loop that will continue until no switching has been done
-    while (switching) {
-      // Start by saying: no switching is done
-      switching = false;
-      rows = table.rows;
-      // Loop through all table rows (except the first, which contains table headers)
-      for (i = 1; i < (rows.length - 1); i++) {
-        // Start by saying there should be no switching
-        shouldSwitch = false;
-        // Get the two elements you want to compare, one from current row and one from the next
-        x = rows[i].getElementsByTagName("TD")[columnIndex];
-        y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
-        // Check if the two rows should switch place, based on the direction, asc or desc
-        if (columnIndex >= 2 && columnIndex <= 6) { // For numeric columns
-          if (parseFloat(x.textContent) > parseFloat(y.textContent)) {
-            shouldSwitch = true;
-            break;
-          }
-        } else { // For text columns
-          if (x.textContent.toLowerCase() > y.textContent.toLowerCase()) {
-            shouldSwitch = true;
-            break;
-          }
+    <script>
+        // JavaScript for menu toggle
+        function toggleMenu() {
+            const navigation = document.querySelector('.navigation');
+            if (navigation.style.left === '0px') {
+                navigation.style.left = '-250px';
+            } else {
+                navigation.style.left = '0px';
+            }
         }
-      }
-      if (shouldSwitch) {
-        // If a switch has been marked, make the switch and mark that a switch has been done
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
-  }
-</script>
+
+        // JavaScript for dynamic content loading - Placeholder function
+        function loadContent(containerId, contentUrl) {
+            // Placeholder for content loading logic
+            console.log(`Load content from ${contentUrl} into #${containerId}`);
+        }
+
+        // JavaScript for sorting and populating the table
+        // ... (Include the existing JavaScript code for sorting and populating the table here) ...
+    </script>
 </body>
 </html>
