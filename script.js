@@ -12,21 +12,13 @@ function toggleMenu() {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadContent('content-container', 'home-content.html');
-}
+}); // This line was missing the closing parenthesis and semicolon
 
 function loadContent(containerId, contentFile) {
     fetch(contentFile)
         .then(response => response.text())
         .then(data => {
             document.getElementById(containerId).innerHTML = data;
-
-            
         })
         .catch(error => console.error('Error loading content:', error));
 }
-
-// Optional: Initialize with default content
-document.addEventListener('DOMContentLoaded', function() {
-    loadContent('content-container', 'home-content.html');
-});
-  
