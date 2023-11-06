@@ -10,6 +10,17 @@ function toggleMenu() {
     }
 }
 
+function loadContent(containerId, contentFile) {
+    fetch(contentFile)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(containerId).innerHTML = data;
+
+            
+        })
+        .catch(error => console.error('Error loading content:', error));
+}
+
 // Optional: Initialize with default content
 document.addEventListener('DOMContentLoaded', function() {
     loadContent('content-container', 'home-content.html');
