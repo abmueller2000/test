@@ -10,6 +10,9 @@ function toggleMenu() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    loadContent('content-container', 'home-content.html');
+
 function loadContent(containerId, contentFile) {
     fetch(contentFile)
         .then(response => response.text())
